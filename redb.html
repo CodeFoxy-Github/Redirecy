@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const bturl = urlParams.get('bt');
+      var encodedStringAtoB = bturl;
+
+      // Decode the String
+      var decodedStringAtoB = atob(encodedStringAtoB);
+
+      console.log(decodedStringAtoB);
+      location = decodedStringAtoB;
+    </script>
+  </body>
+</html>

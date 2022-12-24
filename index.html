@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecy</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+    </style>
+  </head>
+  <style>
+    h1,
+    h2.h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Google Sans', sans-serif;
+    }
+    :root {
+      --bg-color: #15181e;
+      --font-base: aliceblue;
+      --code-base: fuchsia;
+      --callout: lime;
+      --pre-base: #303235;
+    }
+    html,
+    body {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 16px;
+      background-color: var(--bg-color);
+      color: var(--font-base);
+    }
+
+    header {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    section {
+      font-family: 'Google Sans', sans-serif;
+      padding: 1.2em 0 0 0;
+    }
+
+    .logo {
+      font-family: 'Google Sans', sans-serif;
+      width: 100px;
+      height: 100px;
+    }
+
+    code {
+      font-family: 'Google Sans', sans-serif;
+      color: var(--code-base);
+    }
+
+    .callout {
+      font-family: 'Google Sans', sans-serif;
+      color: var(--callout);
+    }
+
+    pre {
+      font-family: 'Google Sans', sans-serif;
+      background-color: #15181e;
+      padding: 10px;
+      color: var(--code-base);
+    }
+    input {
+      font-family: 'Google Sans', sans-serif;
+      background-color: #26282e;
+      border: none;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      border-radius: 12px;
+    }
+
+    .button {
+      font-family: 'Google Sans', sans-serif;
+      background-color: #202229;
+      border: none;
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+    .line-wobble {
+      --uib-size: 320px;
+      --uib-speed: 1.55s;
+      --uib-color: white;
+      --uib-line-weight: 5px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--uib-line-weight);
+      width: var(--uib-size);
+      border-radius: calc(var(--uib-line-weight) / 2);
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .line-wobble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--uib-color);
+      opacity: 0.1;
+    }
+
+    .line-wobble::after {
+      content: '';
+      height: 100%;
+      width: 100%;
+      border-radius: calc(var(--uib-line-weight) / 2);
+      animation: wobble var(--uib-speed) ease-in-out infinite;
+      transform: translateX(-90%);
+      background-color: var(--uib-color);
+    }
+
+    @keyframes wobble {
+      0%,
+      100% {
+        transform: translateX(-90%);
+      }
+
+      50% {
+        transform: translateX(90%);
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <h1>Redirecy</h1>
+
+      <div id="load">
+        <div class="line-wobble"></div>
+        <h2>Loading...</h2>
+      </div>
+    </header>
+    <article>
+      <div id="lb1">
+        <h2>Get started!</h2>
+        <input
+          id="shorten_url"
+          class="shorten-input"
+          autocomplete="off"
+          name="url"
+          type="text"
+          value=""
+          placeholder="Enter your link"
+        />
+        <br />
+        <br />
+        <input id="shorten_btn" class="button button-primary button-large
+        shorten-button" type="submit" value="Shorten!" />
+      </div>
+      <div id="fdb">
+        <h3>Shorten link:</h3>
+
+        <input
+          id="shorten_hhc"
+          class="button button-primary button-large shorten-button"
+          value="Shorten!"
+        />
+      </div>
+      <script>
+        document.getElementById('load').hidden = true;
+        document.getElementById('fdb').hidden = true;
+        document.getElementById('shorten_btn').addEventListener(
+          'click',
+          function () {
+            document.getElementById('lb1').hidden = true;
+            document.getElementById('load').hidden = false;
+            setTimeout(function () {
+              document.getElementById('load').hidden = true;
+              let data = document.getElementById('shorten_url').value;
+              let base64 = btoa(data);
+              let base64url = base64
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+              document.getElementById('fdb').hidden = false;
+              const urb =
+                'https://web-platform-haafyi.stackblitz.io/redb.html?bt=' +
+                base64url;
+              document.getElementById('shorten_hhc').value = urb;
+
+              let text = urb;
+              const copyContent = async () => {
+                try {
+                  await navigator.clipboard.writeText(text);
+                  console.log('Content copied to clipboard');
+                } catch (err) {
+                  console.error('Failed to copy: ', err);
+                }
+              };
+            }, 5000);
+          },
+          false
+        );
+      </script>
+    </article>
+  </body>
+</html>
