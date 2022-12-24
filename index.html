@@ -162,12 +162,22 @@
         />
         <br />
         <br />
-        <input id="shorten_btn" class="button button-primary button-large
-        shorten-button" type="submit" value="Shorten!" />
+        <input
+          id="shorten_btn"
+          class="button button-primary button-large shorten-button"
+          type="submit"
+          value="Shorten!"
+        />
       </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
       <div id="fdb">
-        <h3>Shorten link:</h3>
-
+        <h3>Shorten link: (click to copy)</h3>
+        <button
+          class="btn"
+          data-clipboard-text="Juserrrrt because you can doesn't mean you should — clipborrrard.js"
+        >
+          Copy to clipboard
+        </button>
         <input
           id="shorten_hhc"
           class="button button-primary button-large shorten-button"
@@ -192,8 +202,7 @@
                 .replace(/=+$/, '');
               document.getElementById('fdb').hidden = false;
               const urb =
-                'https://web-platform-haafyi.stackblitz.io/redb.html?bt=' +
-                base64url;
+                'https://redirecy.codefoxy.cf/redb.html?bt=' + base64url;
               document.getElementById('shorten_hhc').value = urb;
 
               let text = urb;
@@ -209,6 +218,9 @@
           },
           false
         );
+      </script>
+      <script>
+        var clipboard = new ClipboardJS('.btn');
       </script>
     </article>
   </body>
