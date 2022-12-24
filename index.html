@@ -79,16 +79,15 @@
 
     .button {
       font-family: 'Google Sans', sans-serif;
-      background-color: #202229;
+      background-color: #26282e;
       border: none;
-      color: rgb(255, 255, 255);
+      color: white;
       padding: 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
       margin: 4px 2px;
-      cursor: pointer;
       border-radius: 12px;
     }
     .line-wobble {
@@ -174,9 +173,10 @@
         <h3>Shorten link: (click to copy)</h3>
         <button
           class="btn"
-          data-clipboard-text="Juserrrrt because you can doesn't mean you should — clipborrrard.js"
+          data-clipboard-action="cut"
+          data-clipboard-target="#shorten_hhc"
         >
-          Copy to clipboard
+          Copy to Clipboard
         </button>
         <input
           id="shorten_hhc"
